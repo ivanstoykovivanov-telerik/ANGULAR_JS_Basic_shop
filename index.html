@@ -5,12 +5,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.9/angular-material.min.css">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.12/angular-material.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
 </head>
-<body  
-    ng-app="myApp" 
-    ng-controller="controller1">
-    
+<body  ng-app="myApp" ng-controller="controller1">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>My App's Title</h2>
+            <md-button>
+                <i class="fas fa-plus-circle"></i>Add
+            </md-button>    
+        </div>  
+    </md-toolbar>
+    <md-content class="md-padding" layout="row" layout-wrap>
+        <md-card ng-repeat="item in items" flex="30">
+            <img ng-src="{{item.image}}" class="md-card-image" alt="Washed Out">
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">{{item.title}}</span>
+                    <p class="md-title">{{ item.price | currency }}</p>
+                    <p class="md-title date ">{{ item.posted | date }}</p>
+                </md-card-title-text>
+            </md-card-title>
+            <md-card-actions layout="row" layout-align="start center">
+                <md-card-icon-actions>
+                <md-button class="md-icon-button" aria-label="Favorite">
+                    <md-icon md-svg-icon="img/icons/favorite.svg"></md-icon>
+                </md-button>
+                <md-button class="md-icon-button" aria-label="Share">
+                    <md-icon md-svg-icon="img/icons/baseline-share-24px.svg"></md-icon>
+                </md-button>
+                </md-card-icon-actions>
+                <md-button class="md-raised md-primary"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to Cart</md-button>
+            </md-card-actions>
+            <md-card-content>
+                <p>
+                    {{item.description}}
+                </p>
+                <md-button class="md-fab md-primary" ng-click="showContact = !showContact">
+                    <i class="fa fa-arrow-circle-down"></i>
+                </md-button>
+                <div class="contact" ng-show="showContact">
+                    <p> 
+                        <i class="fa fa-user"></i>{{item.contact.name}}
+                    </p>
+                    <p> 
+                        <i class="fa fa-phone"></i>{{item.contact.phone}}
+                    </p>
+                    <p> 
+                        <i class="fa fa-envelope"></i>{{item.contact.email}}
+                    </p>
+                </div>
+            </md-card-content>
+
+        </md-card>
+    </md-content>
+
+
+    <button ng-click="showName = true">Show Name</button>
+    <button ng-click="showName=false">Hide Name</button>
+    <h3 ng-show= "showName">Ivan Ivanov</h3>
+    <div ng-show="showing">Show / HIDE </div>
+
+
     <!-- <md-toolbar></md-toolbar>
     <md-button></md-button>
     <p>Two way data binging: </p>
@@ -19,19 +77,24 @@
     <h1>{{ 5 + 3}}</h1>
     <h2>{{person.first}}  {{person.last}} works as a {{person.job}} </h2> -->
 
-    <hello-world></hello-world>
-    <w3-test-directive></w3-test-directive>    
+    <!-- <hello-world></hello-world> -->
+    <!-- <w3-test-directive></w3-test-directive>     -->
 
-<script src="node_modules/angular/angular.js"></script>
+
+
+<!-- Angular Material Dependencies -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular.min.js"></script> 
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-animate.min.js"></script> 
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-aria.min.js"></script> 
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-messages.min.js"></script> 
+
+<!-- Angular Material Javascript now available via Google CDN; version 1.1.12 used here -->
+<script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.12/angular-material.min.js"></script> 
+
+<!-- MINE -->
+<!-- <script src="node_modules/angular/angular.js"></script> -->
 <script src="./scripts/app.js"></script>
 <script src="./components/classifieds.ctr.js"></script>
-<!-- Angular Material Dependencies -->
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.min.js"></script> 
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular-animate.min.js"></script> 
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular-aria.min.js"></script> 
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular-messages.min.js"></script> 
 
-<!-- Angular Material Javascript now available via Google CDN; version 1.1.9 used here -->
-<script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.9/angular-material.min.js"></script> 
 </body>
 </html>
