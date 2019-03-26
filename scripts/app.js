@@ -43,7 +43,6 @@ app.controller("controller1", function($scope, $http, itemsFactory){
   
   itemsFactory.getItems()
     .then(function(data){     // the data coming back from the get request once the promise is resolved
-      console.log(data.data);  
       $scope.items = data.data;  
     });
 
@@ -60,7 +59,7 @@ app.controller("controller1", function($scope, $http, itemsFactory){
         job: "programmer"
     }; 
 
-
+    $scope.sideNavIsOpen = false; 
     $scope.showing = false; 
     $scope.showAdmin = true; 
     $scope.showContact = false; 
