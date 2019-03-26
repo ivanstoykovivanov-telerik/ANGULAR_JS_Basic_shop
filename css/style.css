@@ -17,3 +17,9 @@ md-button i {
     margin-right: 10px;
     color: blue;  
 }
+
+.admin-part p{
+   margin-left: 20px;
+   font-size: 14px; 
+   text-align: center;  
+}

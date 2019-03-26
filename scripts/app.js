@@ -48,7 +48,8 @@ app.controller("controller1", function($scope){
 
 
     $scope.showing = false; 
-   $scope.showContact = false; 
+    $scope.showAdmin = true; 
+    $scope.showContact = false; 
     $scope.items = [
             {
               "id":"1",

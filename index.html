@@ -40,11 +40,15 @@
                 <md-button class="md-raised md-primary"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to Cart</md-button>
             </md-card-actions>
             <md-card-content>
-                <p>
-                    {{item.description}}
-                </p>
+                <p> {{item.description}}</p>
                 <md-button class="md-fab md-primary" ng-click="showContact = !showContact">
                     <i class="fa fa-arrow-circle-down"></i>
+                </md-button>
+                <md-button class="md-raised" ng-show="!showAdmin"  ng-click="showAdmin = !showAdmin">
+                   Show Admin
+                </md-button>
+                <md-button class="md-raised" ng-show="showAdmin" ng-click="showAdmin = !showAdmin">   
+                    Close Admin
                 </md-button>
                 <div class="contact" ng-show="showContact">
                     <p> 
@@ -58,15 +62,21 @@
                     </p>
                 </div>
             </md-card-content>
+            
+            <div class="admin-part" ng-if="showAdmin == true">
+                <p>Admin Area</p>
+                <md-button class="md-primary">Edit</md-button>
+                <md-button class="md-primary">Delete</md-button>
+            </div>
 
         </md-card>
     </md-content>
 
 
-    <button ng-click="showName = true">Show Name</button>
+    <!-- <button ng-click="showName = true">Show Name</button>
     <button ng-click="showName=false">Hide Name</button>
     <h3 ng-show= "showName">Ivan Ivanov</h3>
-    <div ng-show="showing">Show / HIDE </div>
+    <div ng-show="showing">Show / HIDE </div> -->
 
 
     <!-- <md-toolbar></md-toolbar>
