@@ -1,4 +1,35 @@
-var app = angular.module("myApp", ['ngMaterial', 'ngMessages']);
+var app = angular.module("myApp", ['ngMaterial', 'ngMessages', 'ui.router']);
+
+// app.config(function($stateProvider){
+//   $stateProvider
+//     .state('stateone', {
+//       url: '/stateone', 
+//       template: '<h1>State One</h1>'
+//     })
+//     .state('statetwo', {
+//       url: '/statetwo',
+//       template: '<h1>State Two</h1>'
+//     })
+// }); 
+
+app.config(function($stateProvider) {
+  
+  var helloState = {
+    name: 'hello',
+    url: '/hello',
+    template: '<h3>HELLO</h3>'
+  }
+  var aboutState = {
+    name: 'about',
+    url: '/about',
+    template: '<h3>ABOUT</h3>'
+  }
+
+  $stateProvider.state(helloState);
+  $stateProvider.state(aboutState);
+  console.log("IN");
+});
+
 
 app.directive("helloWorld", function(){
     return{

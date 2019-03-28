@@ -5,11 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <!-- Angular Material Dependencies -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular.min.js"></script> 
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-animate.min.js"></script> 
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-aria.min.js"></script> 
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-messages.min.js"></script> 
+
+    <!-- Angular Material Javascript now available via Google CDN; version 1.1.12 used here -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.12/angular-material.min.js"></script> 
+
+    <!-- MINE -->
+    <!-- <script src="node_modules/angular/angular.js"></script> -->
+    <script src="./node_modules/@uirouter/angularjs/release/angular-ui-router.js"></script>
+    <!-- <script src="https://unpkg.com/@uirouter/angularjs@1.0.22/release/angular-ui-router.js"></script> -->
+    <script src="./scripts/app.js"></script>
+    <script src="./components/classifieds.ctr.js"></script>
+    <script src="./components/itemsFactory.js"></script>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.12/angular-material.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body  ng-app="myApp" ng-controller="controller1">
+    
+    <a ui-sref="hello" ui-sref-active="active">Hello</a>
+    <a ui-sref="about" ui-sref-active="active">About</a>   
+
+    <ui-view></ui-view>
+   
     <md-toolbar>
         <div class="md-toolbar-tools">
             <p><strong>Sell Stuff </strong></p>
@@ -146,22 +168,6 @@
     <!-- <hello-world></hello-world> -->
     <!-- <w3-test-directive></w3-test-directive>     -->
 
-
-
-<!-- Angular Material Dependencies -->
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular.min.js"></script> 
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-animate.min.js"></script> 
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-aria.min.js"></script> 
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-messages.min.js"></script> 
-
-<!-- Angular Material Javascript now available via Google CDN; version 1.1.12 used here -->
-<script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.12/angular-material.min.js"></script> 
-
-<!-- MINE -->
-<!-- <script src="node_modules/angular/angular.js"></script> -->
-<script src="./scripts/app.js"></script>
-<script src="./components/classifieds.ctr.js"></script>
-<script src="./components/itemsFactory.js"></script>
 
 </body>
 </html>
