@@ -13,7 +13,7 @@ app.directive("w3TestDirective", function() {
 });
 
 
-app.controller("controller1", function($scope, $http, itemsFactory, $mdSidenav){
+app.controller("controller1", function($scope, $http, itemsFactory, $mdSidenav, $mdDialog){
     $scope.sideNavIsOpen = false; 
     $scope.showing = false; 
     $scope.showAdmin = true; 
@@ -64,6 +64,21 @@ app.controller("controller1", function($scope, $http, itemsFactory, $mdSidenav){
       $scope.item = {};  
       $scope.closeSidebar(); 
     }
+  }
+
+  $scope.deleteItem = function(event, item){
+    let confirm = $mdDialog.confirm()
+      .title(`Are you sure you want to delete ${item.name}? `)
+      .ok('Yes')
+      .cancel('No')
+      .targetEvent(event); 
+     
+      $mdDialog.show(confirm).then(function(){
+        let index = $scope.items.indexOf(item)
+        $scope.items.splice(index, 1); 
+      }, function(){
+        $scope.status
+      }); 
   }
   
   function showToast(message, delay){

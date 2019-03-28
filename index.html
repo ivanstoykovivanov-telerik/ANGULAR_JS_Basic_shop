@@ -122,7 +122,7 @@
             <div class="admin-part" ng-if="showAdmin == true">
                 <p>Admin Area</p>
                 <md-button ng-click="editItem(item)" class="md-primary">Edit</md-button>
-                <md-button ng-click = "deleteItem(item)" class="md-primary">Delete</md-button>
+                <md-button ng-click = "deleteItem($event, item)" class="md-primary">Delete</md-button>
             </div>
 
         </md-card>
