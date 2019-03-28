@@ -1,30 +1,4 @@
-// // USE Ctrl + F5 to refresh 
-// console.log("Testing... ");
-
-//  var app = angular.module("ngClassifieds", ["ngMaterial"]); 
-// // angular.module("ngClassifieds", ["ngMaterial"])
-// //     .config(function($mdThemingProvider){
-// //         $mdThemingProvider.theme('default')
-// //             .primaryPalette('teal')
-// //             .accentPalette('orange'); 
-// //     }) 
-// // app.directive("helloWorld", function(){
-// //         return {            // => directive definition object
-// //            template: "<h1>Hello World</h1>"  
-// //         }; 
-// // }); 
-
-
-// app.directive("w3TestDirective", function() {
-//     return {
-//         template : "<h1>Made by a directive!</h1>"
-//     };
-// });
-
-
 var app = angular.module("myApp", ['ngMaterial', 'ngMessages']);
-
-
 
 app.directive("helloWorld", function(){
     return{
@@ -39,8 +13,19 @@ app.directive("w3TestDirective", function() {
 });
 
 
-app.controller("controller1", function($scope, $http, itemsFactory){
-  
+app.controller("controller1", function($scope, $http, itemsFactory, $mdSidenav){
+    $scope.sideNavIsOpen = false; 
+    $scope.showing = false; 
+    $scope.showAdmin = true; 
+    $scope.showContact = false; 
+    $scope.editing = false; 
+
+    const contact = {
+      name: "Ivan Ivanov", 
+      phone: "555-555-555", 
+      email: "ivanstoykovivanov@gmail.com" 
+    }
+
   itemsFactory.getItems()
     .then(function(data){     // the data coming back from the get request once the promise is resolved
       $scope.items = data.data;  
@@ -52,18 +37,41 @@ app.controller("controller1", function($scope, $http, itemsFactory){
   //     $scope.items = data.data;  
   //   });
 
+  $scope.openSidebar = function(){
+    $mdSidenav('left').open(); 
+  }; 
 
-  $scope.person = {
-        first: "Ryan", 
-        last: "Johnson", 
-        job: "programmer"
-    }; 
+  $scope.closeSidebar = function(){
+    $mdSidenav('left').close(); 
+  }
 
-    $scope.sideNavIsOpen = false; 
-    $scope.showing = false; 
-    $scope.showAdmin = true; 
-    $scope.showContact = false; 
-    $scope.items = []; 
+  $scope.editItem = function(item){
+    $scope.editing = true; 
+    $scope.openSidebar(); 
+    $scope.item =  item; 
+  }
 
-    $scope.message = "Hello world from the scope"; 
+  $scope.saveEdit = function(){
+    $scope.editing = false; 
+    $scope.item = {}; 
+    $scope.closeSidebar(); 
+  }
+
+  $scope.saveItem = function(item){
+    if(item){
+      item.contact = contact ;  
+      $scope.items.push(item); 
+      $scope.item = {};  
+      $scope.closeSidebar(); 
+    }
+  }
+  
+  function showToast(message, delay){
+    $mdToast.show(
+      $mdToast.simple()
+        .content(message)
+        .position('top, right')
+        .hideDelay(3000)
+    )
+  }
 }) 
